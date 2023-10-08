@@ -1,0 +1,440 @@
+// =========================
+// Variables + Mixins
+// =========================
+
+// Variables
+$gold: #d5a269;
+$secondary: #d4c4bc;
+$dark: #1a1a1a;
+$white: #F3F3F3;
+$break-med: 600px;
+$break-lg: 768px;
+$break-xl: 1024px;
+$font-playfair: 'Playfair Display', serif;
+$font-montserrat: 'Montserrat', sans-serif;
+$spacing-normal: normal;
+$spacing-medium: 0.25rem; //need to adjust
+$spacing-large: .75rem;
+$line-height-lg: 1.75rem;
+
+// Mixins
+@mixin tablet-only {
+    @media (min-width: $break-med) and (max-width: #{$break-lg - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet-up {
+    @media (min-width: $break-med) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $break-lg) {
+        @content;
+    }
+}
+
+@mixin desktop-lg {
+    @media (min-width: $break-xl) {
+        @content;
+    }
+}
+
+@mixin center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin playfair {
+    font-family: $font-playfair;
+    font-weight: 400;
+}
+
+@mixin montserrat-thin {
+    font-family: $font-montserrat;
+    font-weight: 200;
+}
+
+@mixin montserrat {
+    font-family: $font-montserrat;
+    font-weight: 400;
+}
+
+@mixin montserrat-bold {
+    font-family: $font-montserrat;
+    font-weight: 600;
+}
+
+
+// =========================
+// Default Layout
+// =========================
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: $white;
+}
+
+main {
+    font-size: 1em;
+    @include center;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.75em;
+    @include playfair();
+    margin: 0;
+
+    @include desktop() {
+        font-size: 5em;
+    }
+}
+
+h2 {
+    font-size: 1.5em;
+    @include playfair();
+    margin: 0;
+    letter-spacing: $spacing-large;
+    text-transform: uppercase;
+    color: $gold;
+}
+
+h3 {
+    margin: 0;
+    font-size: 1.75em;
+    @include playfair();
+    color: $gold;
+    letter-spacing: $spacing-large;
+    text-transform: uppercase;
+}
+
+p {
+    margin: 0;
+    font-size: 0.85rem;
+    @include montserrat-thin();
+    line-height: 1.5rem;
+    color: $white;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+}
+
+li {
+    font-size: 0.95em;
+    @include montserrat();
+}
+
+// =========================
+// Reusable Styles
+// =========================
+
+//main button
+.main-btn {
+    display: inline-block;
+    width: min-content;
+    letter-spacing: $spacing-large;
+    border: 1px solid $gold;
+    padding: 10px 14px;
+    background: rgb(26, 26, 26, 0.7);
+
+    @include tablet-up () {
+        display: initial;
+    }
+
+    .main-btn-text {
+        text-transform: uppercase;
+        color: $gold;
+        line-height: 1.5rem;
+        margin-right: -10px;
+        margin-left: 10px;
+        line-height: $line-height-lg;
+
+        @include tablet-up () {
+            margin-right: -$spacing-large;
+            margin-left: 0;
+        }
+    }
+
+    &:hover,
+    &:hover {
+        border: 2px solid $gold;
+        box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+    }
+}
+
+//TCNA logo
+.logo {
+    display: flex;
+    align-items: center;
+
+    img {
+        height: 30px;
+    }
+
+    p {
+        @include playfair();
+        color: rgba(255, 255, 255, .75);
+        // color: $gold;
+        letter-spacing: $spacing-medium;
+        font-size: 30px;
+        padding-left: 10px;
+    }
+}
+
+//font designs
+.title-small {
+    margin: 0;
+    font-size: 0.95rem;
+    @include montserrat();
+    letter-spacing: $spacing-large;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5rem;
+    text-transform: uppercase;
+    color: $white;
+}
+
+
+
+// =========================
+// Homepage
+// =========================
+
+//main nav
+#nav {
+    background: $dark;
+    padding: 20px;
+    border-bottom: 1px solid $gold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .hamburger {
+        background: $dark;
+        border: 1px solid transparent;
+        color: $gold;
+
+        .material-icons {
+            font-size: 23px;
+        }
+
+        &:hover {
+            border: 1px solid $gold;
+        }
+
+        .close {
+            display: none;
+        }
+
+        @include desktop {
+            display: none;
+        }
+    }
+
+    .nav-wrapper {
+        display: none;
+
+        @include desktop {
+            display: flex;
+            justify-content: space-around;
+            flex: auto;
+            padding-inline-start: 40px;
+
+            li {
+                border-bottom: 1px solid transparent;
+
+                &:hover {
+                    border-bottom: 1px solid $gold;
+                }
+            }
+
+            a {
+                color: $gold;
+                letter-spacing: $spacing-medium;
+            }
+        }
+
+    }
+}
+
+
+// homepage - hero banner
+.hero {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .85) 15%, rgba(0, 0, 0, 0.3) 45%, rgba(0, 0, 0, 0.55) 90%), url("../assets/img/hero-mobile-v2.jpg") no-repeat 40% 50%;
+    background-size: cover;
+    height: 600px;
+
+    @include desktop() {
+        background: linear-gradient(to right, rgba(0, 0, 0, .85) 15%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0.55) 90%), url("../assets/img/hero.jpg") no-repeat left;
+        background-size: cover;
+        height: 600px;
+    }
+
+    &-text {
+        max-width: 360px;
+        position: relative;
+        top: 8%;
+        margin: 0 auto;
+        color: $white;
+        letter-spacing: $spacing-large;
+        text-transform: uppercase;
+        text-align: center;
+
+        @include desktop() {
+            text-align: initial;
+            max-width: none;
+            top: 35%;
+            left: 5%;
+        }
+
+        h1 {
+            padding-bottom: 15px;
+            line-height: $line-height-lg;
+
+            @include desktop() {
+                margin-left: 1.5%;
+                line-height: normal;
+            }
+        }
+
+        .lines {
+            color: $gold;
+            width: fit-content;
+            position: relative;
+
+            span::before,
+            span::after {
+                content: "";
+                display: block;
+                width: 20px;
+                height: 1px;
+                background: $gold;
+                position: absolute;
+            }
+
+            span::before {
+                left: 20%;
+                top: 75%;
+
+                @include desktop() {
+                    left: -7%;
+                    top: 50%;
+                }
+            }
+
+            span::after {
+                right: 23%;
+                top: 75%;
+
+                @include desktop() {
+                    right: -5%;
+                    top: 50%;
+                }
+            }
+        }
+    }
+}
+
+//homepage - brochure
+.brochure {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: #535353;
+    border-top: 1px solid $gold;
+    border-bottom: 1px solid $gold;
+}
+
+//homepage - quote
+.quick-words {
+    background: linear-gradient(to bottom, rgba(11, 11, 11, .9) 15%, rgba(11, 11, 11, 0.9) 100%), url("../assets/img/background-sheep.webp") no-repeat 40% 50%;
+    background-size: cover;
+    background-attachment: fixed;
+    border-bottom: 1px solid $gold;
+    // height: 470px;
+
+    .quick-words-wrapper {
+        padding: 50px;
+
+        .quick-words-title {
+            text-align: left;
+        }
+    }
+
+    img {
+        max-width: 350px;
+        box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+    }
+
+    &-text {
+        background-color: $dark;
+        padding: 40px;
+        margin-top: -25px;
+        max-width: 600px;
+        text-align: left;
+        margin: -25px auto 0 auto;
+    }
+}
+
+
+// =========================
+// Footer
+// =========================
+footer {
+    background: $dark;
+
+    .footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 40px 10px;
+
+        @include desktop() {
+            justify-content: space-between;
+            margin: 0 auto;
+            max-width: 1400px;
+            padding: 40px 30px;
+        }
+
+        svg {
+            margin-right: 5px;
+        }
+
+        .contact,
+        .credentials {
+            display: flex;
+            flex-direction: column;
+
+            p {
+                letter-spacing: $spacing-medium;
+                line-height: 2.5rem;
+                color: $gold;
+
+
+            }
+
+            .small-text {
+                font-size: 0.75rem;
+            }
+        }
+
+        .contact {
+            align-items: flex-start;
+        }
+
+        .credentials {
+            align-items: flex-end;
+        }
+    }
+}
