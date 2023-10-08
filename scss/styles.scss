@@ -1,3 +1,9 @@
+/* ============================================= */
+/* Sub-Folder Imports */
+/* ============================================= */
+@import "normalize";
+@import "breed-page";
+
 // =========================
 // Variables + Mixins
 // =========================
@@ -124,6 +130,7 @@ p {
 
 a,
 a:visited {
+    color: rgba(255, 255, 255, .75);
     text-decoration: none;
 }
 
@@ -179,6 +186,7 @@ li {
 .logo {
     display: flex;
     align-items: center;
+    position: relative;
 
     img {
         height: 30px;
@@ -186,11 +194,16 @@ li {
 
     p {
         @include playfair();
-        color: rgba(255, 255, 255, .75);
-        // color: $gold;
         letter-spacing: $spacing-medium;
         font-size: 30px;
         padding-left: 10px;
+
+        a::before {
+            content: "";
+            display: block;
+            inset: 0;
+            position: absolute;
+        }
     }
 }
 
@@ -362,17 +375,27 @@ li {
     background-size: cover;
     background-attachment: fixed;
     border-bottom: 1px solid $gold;
-    // height: 470px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    .quick-words-wrapper {
-        padding: 50px;
+// height: 470px;
 
-        .quick-words-title {
-            text-align: left;
-        }
+.quick-words-wrapper {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    // @include desktop() {
+    // padding: 50px;
+    // }
+
+    .quick-words-title {
+        text-align: left;
     }
 
     img {
+        position: relative;
+        z-index: 1;
         max-width: 350px;
         box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
     }
@@ -409,6 +432,10 @@ footer {
 
         svg {
             margin-right: 5px;
+        }
+
+        a {
+            color: $gold;
         }
 
         .contact,
