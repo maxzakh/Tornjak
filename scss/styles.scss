@@ -1,8 +1,7 @@
-/* ============================================= */
-/* Sub-Folder Imports */
-/* ============================================= */
+// =========================
+// Sub-Folder Imports 
+// =========================
 @import "normalize";
-@import "breed-page";
 
 // =========================
 // Variables + Mixins
@@ -22,6 +21,7 @@ $spacing-normal: normal;
 $spacing-medium: 0.25rem; //need to adjust
 $spacing-large: .75rem;
 $line-height-lg: 1.75rem;
+$shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
 
 // Mixins
 @mixin tablet-only {
@@ -109,6 +109,7 @@ h2 {
     letter-spacing: $spacing-large;
     text-transform: uppercase;
     color: $gold;
+    margin-top: 0.5rem;
 }
 
 h3 {
@@ -130,6 +131,7 @@ p {
 
 a,
 a:visited {
+    @include montserrat();
     color: rgba(255, 255, 255, .75);
     text-decoration: none;
 }
@@ -144,6 +146,10 @@ li {
     @include montserrat();
 }
 
+.hide {
+    display: none;
+}
+
 // =========================
 // Reusable Styles
 // =========================
@@ -156,6 +162,7 @@ li {
     border: 1px solid $gold;
     padding: 10px 14px;
     background: rgb(26, 26, 26, 0.7);
+    font-size: 0.75rem;
 
     @include tablet-up () {
         display: initial;
@@ -175,10 +182,10 @@ li {
         }
     }
 
-    &:hover,
     &:hover {
         border: 2px solid $gold;
         box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
     }
 }
 
@@ -198,6 +205,10 @@ li {
         font-size: 30px;
         padding-left: 10px;
 
+        a {
+            color: rgba(255, 255, 255, .75);
+        }
+
         a::before {
             content: "";
             display: block;
@@ -210,7 +221,7 @@ li {
 //font designs
 .title-small {
     margin: 0;
-    font-size: 0.95rem;
+    font-size: 0.75rem;
     @include montserrat();
     letter-spacing: $spacing-large;
     font-family: 'Montserrat', sans-serif;
@@ -219,10 +230,46 @@ li {
     color: $white;
 }
 
+//CTA read more
+.read-more {
+    font-size: 0.7rem;
+    @include montserrat();
+    letter-spacing: $spacing-large;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 3.5rem;
+    text-transform: uppercase;
+    color: $gold;
+
+    // a:hover {
+    //     color: white;
+    // }
+}
+
+.line {
+    position: relative;
+
+    &::after {
+        content: "";
+        display: block;
+        width: 45px;
+        height: 1px;
+        background: $gold;
+        position: absolute;
+        right: -30%;
+        top: 50%;
+
+        @include desktop() {
+            right: -5%;
+            top: 50%;
+        }
+
+    }
+}
+
 
 
 // =========================
-// Homepage
+// Header
 // =========================
 
 //main nav
@@ -282,12 +329,16 @@ li {
     }
 }
 
+// =========================
+// Homepage
+// =========================
 
 // homepage - hero banner
 .hero {
     background: linear-gradient(to bottom, rgba(0, 0, 0, .85) 15%, rgba(0, 0, 0, 0.3) 45%, rgba(0, 0, 0, 0.55) 90%), url("../assets/img/hero-mobile-v2.jpg") no-repeat 40% 50%;
     background-size: cover;
     height: 600px;
+    border-bottom: 1px solid $gold;
 
     @include desktop() {
         background: linear-gradient(to right, rgba(0, 0, 0, .85) 15%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0.55) 90%), url("../assets/img/hero.jpg") no-repeat left;
@@ -327,6 +378,10 @@ li {
             width: fit-content;
             position: relative;
 
+            @include desktop() {
+                font-size: 0.95rem;
+            }
+
             span::before,
             span::after {
                 content: "";
@@ -364,8 +419,8 @@ li {
 .brochure {
     padding-top: 25px;
     padding-bottom: 25px;
-    background-color: #535353;
-    border-top: 1px solid $gold;
+    // background-color: #535353;
+    background-color: $dark;
     border-bottom: 1px solid $gold;
 }
 
@@ -378,38 +433,323 @@ li {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
 
-// height: 470px;
+    @include desktop() {
+        height: 500px;
+    }
 
-.quick-words-wrapper {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    // @include desktop() {
-    // padding: 50px;
-    // }
 
-    .quick-words-title {
+
+    &-wrapper {
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        @include desktop() {
+            margin: 0 auto;
+            max-width: 900px;
+        }
+    }
+
+    &-top {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 80%;
+        max-width: 400px;
+
+
+        @include desktop() {
+            height: 350px;
+            min-width: 768px;
+            max-width: 900px;
+        }
+    }
+
+    &-title {
         text-align: left;
+
+        @include desktop () {
+            position: relative;
+            right: -42%;
+            top: 16%;
+        }
     }
 
     img {
         position: relative;
         z-index: 1;
-        max-width: 350px;
-        box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
+        width: 100%;
+        box-shadow: $shadow;
+
+        @include desktop {
+            max-width: 350px;
+            position: relative;
+            right: 9%;
+            top: -13%;
+        }
     }
 
-    &-text {
-        background-color: $dark;
-        padding: 40px;
-        margin-top: -25px;
+
+    &-bottom {
+        background-color: #1a1a1a;
+        padding: 70px 3% 5px;
+        margin: -30px auto 0;
+        width: 95vw;
         max-width: 600px;
         text-align: left;
-        margin: -25px auto 0 auto;
+
+        @include desktop {
+            position: relative;
+            max-width: 750px;
+            left: 3%;
+            top: -31%;
+            padding: 30px 30px 5px;
+
+            .text-block,
+            .read-more {
+                padding-left: 38%;
+            }
+
+            .line::after {
+                right: -27%;
+            }
+        }
+
+        a {
+            color: $gold;
+        }
     }
 }
 
+//homepage - cards 
+.card {
+    @include desktop {
+        display: flex;
+    }
+
+    .lines {
+        color: $gold;
+        width: fit-content;
+        position: relative;
+
+        span::before,
+        span::after {
+            content: "";
+            display: block;
+            width: 20px;
+            height: 1px;
+            background: $gold;
+            position: absolute;
+        }
+
+        span::before,
+        span::after {
+            top: 50%;
+        }
+    }
+
+    .card-wrapper {
+        flex-basis: 33.33%;
+        padding: 20px;
+
+        .card-border {
+            border: 1px solid transparent;
+
+            &:hover {
+                border: 1px solid grey;
+            }
+        }
+
+        &.one {
+            background: linear-gradient(to bottom, rgba(11, 11, 11, .7) 15%, rgba(11, 11, 11, 0.7) 100%), url("../assets/img/tornjak-pandora2.jpg") no-repeat top center;
+            background-size: cover;
+
+            .lines span::before {
+                left: -25%;
+
+                @include desktop() {
+                    left: -28px;
+                }
+            }
+
+            .lines span::after {
+                right: -17%;
+
+                @include desktop() {
+                    right: -17px;
+                }
+            }
+        }
+
+        &.two {
+            background: linear-gradient(to bottom, rgba(11, 11, 11, .7) 15%, rgba(11, 11, 11, 0.7) 100%), url("../assets/img/tornjak-ola.jpg") no-repeat top center;
+            background-size: cover;
+
+            .lines span::before {
+                left: -17%;
+
+                @include desktop() {
+                    left: -28px;
+                }
+            }
+
+            .lines span::after {
+                right: -10%;
+
+                @include desktop() {
+                    right: -17px;
+                }
+            }
+        }
+
+        &.three {
+            background: linear-gradient(to bottom, rgba(11, 11, 11, .7) 15%, rgba(11, 11, 11, 0.7) 100%), url("../assets/img/tornjak-dagon.jpg") no-repeat 20% 20%;
+            background-size: cover;
+
+            .lines span::before {
+                left: -17%;
+
+                @include desktop() {
+                    right: -17px;
+                }
+            }
+
+            .lines span::after {
+                right: -10%;
+
+                @include desktop() {
+                    right: -17px;
+                }
+            }
+        }
+    }
+
+    .card-border {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 400px;
+    }
+
+    .card-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-btn {
+        margin-top: 37px;
+    }
+
+    span {
+        display: block;
+        width: max-content;
+    }
+
+}
+
+// =========================
+// Breed Page
+// =========================
+
+#page-breed {
+    .hero {
+        background: linear-gradient(to right, rgba(0, 0, 0, .75) 15%, rgba(0, 0, 0, 0.75) 90%), url("../assets/img/hero.jpg") no-repeat left;
+        background-size: cover;
+    }
+}
+
+.two-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    &-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: clamp(360px, 80%, 900px);
+        height: 40vh;
+    }
+
+    &-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+
+        &-block {
+            display: flex;
+            flex-direction: column;
+            gap: 5%;
+            margin-top: 1.5rem;
+            text-align: left;
+            font-size: 0.75rem;
+            color: #fff;
+
+            @include desktop {
+                flex-direction: row;
+            }
+
+            p {
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+}
+
+
+// breed - overlap card
+.overlap {
+    display: flex;
+    justify-content: center;
+    background: #202020;
+
+    &-quote {
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+        align-items: center;
+
+        @include desktop {
+            flex-direction: row;
+        }
+    }
+
+    .offset-card {
+        display: flex;
+        flex-direction: column;
+        width: clamp(360px, 80%, 900px);
+        margin: -4rem 4rem 2rem 4rem;
+        background-color: #fff;
+        padding: 2rem;
+        text-align: left;
+
+        @include desktop {
+            margin: -4rem 4rem 4rem 4rem;
+        }
+
+        .title-small {
+            color: #000;
+        }
+
+        .line {
+            margin: 0.5rem 0 1.5rem;
+            padding-bottom: 50px;
+
+            &::after {
+                left: 0;
+                top: 87%
+            }
+        }
+
+        p {
+            color: #000;
+            @include montserrat;
+        }
+    }
+}
 
 // =========================
 // Footer
@@ -465,3 +805,6 @@ footer {
         }
     }
 }
+
+
+@import "breed-page";
