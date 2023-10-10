@@ -236,7 +236,7 @@ li {
     @include montserrat();
     letter-spacing: $spacing-large;
     font-family: 'Montserrat', sans-serif;
-    line-height: 3.5rem;
+    line-height: 2.5rem;
     text-transform: uppercase;
     color: $gold;
 
@@ -335,7 +335,7 @@ li {
 
 // homepage - hero banner
 .hero {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, .85) 15%, rgba(0, 0, 0, 0.3) 45%, rgba(0, 0, 0, 0.55) 90%), url("../assets/img/hero-mobile-v2.jpg") no-repeat 40% 50%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .85) 15%, rgba(0, 0, 0, 0.3) 45%, rgba(0, 0, 0, 0.55) 90%), url("../assets/img/hero-mobile.jpg") no-repeat 40% 50%;
     background-size: cover;
     height: 600px;
     border-bottom: 1px solid $gold;
@@ -480,6 +480,7 @@ li {
         z-index: 1;
         width: 100%;
         box-shadow: $shadow;
+        margin-top: 0.5rem;
 
         @include desktop {
             max-width: 350px;
@@ -492,7 +493,7 @@ li {
 
     &-bottom {
         background-color: #1a1a1a;
-        padding: 70px 3% 5px;
+        padding: 60px 4% 5px;
         margin: -30px auto 0;
         width: 95vw;
         max-width: 600px;
@@ -503,7 +504,7 @@ li {
             max-width: 750px;
             left: 3%;
             top: -31%;
-            padding: 30px 30px 5px;
+            padding: 30px;
 
             .text-block,
             .read-more {
@@ -561,28 +562,7 @@ li {
         }
 
         &.one {
-            background: linear-gradient(to bottom, rgba(11, 11, 11, .7) 15%, rgba(11, 11, 11, 0.7) 100%), url("../assets/img/tornjak-pandora2.jpg") no-repeat top center;
-            background-size: cover;
-
-            .lines span::before {
-                left: -25%;
-
-                @include desktop() {
-                    left: -28px;
-                }
-            }
-
-            .lines span::after {
-                right: -17%;
-
-                @include desktop() {
-                    right: -17px;
-                }
-            }
-        }
-
-        &.two {
-            background: linear-gradient(to bottom, rgba(11, 11, 11, .7) 15%, rgba(11, 11, 11, 0.7) 100%), url("../assets/img/tornjak-ola.jpg") no-repeat top center;
+            background: linear-gradient(to bottom, rgba(11, 11, 11, .7) 15%, rgba(11, 11, 11, 0.7) 100%), url("../assets/img/tornjak-pandora.jpg") no-repeat top center;
             background-size: cover;
 
             .lines span::before {
@@ -595,6 +575,31 @@ li {
 
             .lines span::after {
                 right: -10%;
+
+                @include desktop() {
+                    right: -17px;
+                }
+            }
+        }
+
+        &.two {
+            background: linear-gradient(to bottom, rgba(11, 11, 11, .7) 15%, rgba(11, 11, 11, 0.7) 100%), url("../assets/img/tornjak-ola.jpg") no-repeat top center;
+            background-size: cover;
+
+            @include desktop {
+                order: -1;
+            }
+
+            .lines span::before {
+                left: -25%;
+
+                @include desktop() {
+                    left: -28px;
+                }
+            }
+
+            .lines span::after {
+                right: -17%;
 
                 @include desktop() {
                     right: -17px;
@@ -728,6 +733,7 @@ li {
 
         @include desktop {
             margin: -4rem 4rem 4rem 4rem;
+            order: 1;
         }
 
         .title-small {
@@ -748,6 +754,10 @@ li {
             color: #000;
             @include montserrat;
         }
+    }
+
+    .read-more a {
+        color: $gold;
     }
 }
 
