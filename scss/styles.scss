@@ -2,7 +2,6 @@
 /* Sub-Folder Imports */
 /* ============================================= */
 @import "normalize";
-@import "breed-page";
 
 // =========================
 // Variables + Mixins
@@ -465,3 +464,5 @@ footer {
         }
     }
 }
+
+@import "breed-page";

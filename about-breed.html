@@ -20,6 +20,8 @@
         <!-- stylesheet -->
         <link rel="stylesheet" href="css/styles.css" />
 
+        <!-- js -->
+
         <!-- OpenGraph -->
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
@@ -41,15 +43,16 @@
                     <p class="logo-text">TCNA</p>
                 </div>
                 <button class="hamburger">
-                    <span class="material-icons expand">menu</span>
-                    <span class="close">X</span>
+                    <!-- material icons https://material.io/resources/icons/ -->
+                    <i class="menuIcon material-icons">menu</i>
+                    <i class="closeIcon material-icons">close</i>
                 </button>
-                <ul class="nav-wrapper">
-                    <li class="nav-item"><a href="/about-breed.html">The Breed</a></li>
-                    <li class="nav-item"><a href="/">The Club</a></li>
-                    <li class="nav-item"><a href="/">Breeders</a></li>
-                    <li class="nav-item"><a href="/">Events</a></li>
-                    <li class="nav-item"><a href="/">Stories</a></li>
+                <ul class="nav-wrapper menu">
+                    <li class="nav-item menuItem"><a href="/about-breed.html">The Breed</a></li>
+                    <li class="nav-item menuItem"><a href="/">The Club</a></li>
+                    <li class="nav-item menuItem"><a href="/">Breeders</a></li>
+                    <li class="nav-item menuItem"><a href="/">Events</a></li>
+                    <li class="nav-item menuItem"><a href="/">Stories</a></li>
                 </ul>
             </div>
         </header>
@@ -79,7 +82,7 @@
                     </div>
                 </div>
             </section>
-            
+
             <section class="two">
                 <div class="overlap-quote">
                     <div class="offset-card">
@@ -169,5 +172,6 @@
                 </div>
             </div>
         </footer>
+        <script src="index.js"></script>
     </body>
 </html>
