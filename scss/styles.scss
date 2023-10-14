@@ -299,7 +299,7 @@ li {
         //     border: 1px solid $gold;
         // }
 
-        .closeIcon {
+        .close-icon {
             display: none;
         }
 
@@ -309,29 +309,80 @@ li {
     }
 
     .menu {
+        display: none;
+
+        background: #1a1a1a;
+
         position: fixed;
-        transform: translateY(-100%);
-        transition: transform ease-in-out 0.3s;
         top: 0;
         left: 0;
         right: 0;
+        padding-left: 0;
+        transform: translateY(-100%);
+        transition: transform ease-in-out 0.3s;
         z-index: 99;
         background: #1a1a1a;
         color: white;
         list-style: none;
+
+        a {
+            color: #d5a269;
+            letter-spacing: 0.25rem;
+        }
+
+        @include desktop {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            transform: translateY(0%);
+            padding-left: 40px;
+            width: 100%;
+
+            ul {
+                padding-left: 40;
+            }
+            li {
+                margin: 0;
+                ;
+
+                a {
+                    font-size: 0.9rem;
+                }
+            }
+        }
     }
 
-    .showMenu {
-        transform: translateY(23%);
+    // .hamburger.show-menu .menu {
+    //     display: none;
+    // }
+
+    // @include desktop {
+    //     .hamburger.show-menu .menu {
+    //         display: flex;
+    //     }
+    // }
+
+    .show-menu {
+        transform: translateY(17%);
+        display: flex;
+        flex-direction: column;
     }
 
-    .menuItem {
+    .menu-item {
         display: block;
         text-align: center;
         margin: 2rem 4rem;
         font-size: 1.8rem;
         color: white;
         text-decoration: none;
+
+        @include desktop {
+            transform: translateY(0%);
+            display: flex;
+
+            // background: red;
+        }
     }
 
     .nav-wrapper {
