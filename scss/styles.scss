@@ -2,6 +2,7 @@
 // Sub-Folder Imports 
 // =========================
 @import "normalize";
+@import "carousel";
 
 // =========================
 // Variables + Mixins
@@ -295,10 +296,6 @@ li {
             font-size: 23px;
         }
 
-        // &:hover {
-        //     border: 1px solid $gold;
-        // }
-
         .close-icon {
             display: none;
         }
@@ -308,12 +305,14 @@ li {
         }
     }
 
-    .menu {
+    .nav-wrapper {
         display: none;
+        flex-direction: column;
+
 
         background: #1a1a1a;
 
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         right: 0;
@@ -330,6 +329,20 @@ li {
             letter-spacing: 0.25rem;
         }
 
+        .nav-item {
+            display: block;
+            text-align: center;
+            margin: 2rem 4rem;
+            font-size: 1.8rem;
+            color: white;
+            text-decoration: none;
+    
+            @include desktop {
+                transform: translateY(0%);
+                display: flex;
+            }
+        }
+
         @include desktop {
             position: relative;
             display: flex;
@@ -339,78 +352,26 @@ li {
             padding-left: 40px;
             width: 100%;
 
-            ul {
-                padding-left: 40;
-            }
-            li {
+            .nav-item {
                 margin: 0;
-                ;
+                border-bottom: 1px solid transparent;
 
                 a {
                     font-size: 0.9rem;
                 }
-            }
-        }
-    }
-
-    // .hamburger.show-menu .menu {
-    //     display: none;
-    // }
-
-    // @include desktop {
-    //     .hamburger.show-menu .menu {
-    //         display: flex;
-    //     }
-    // }
-
-    .show-menu {
-        transform: translateY(17%);
-        display: flex;
-        flex-direction: column;
-    }
-
-    .menu-item {
-        display: block;
-        text-align: center;
-        margin: 2rem 4rem;
-        font-size: 1.8rem;
-        color: white;
-        text-decoration: none;
-
-        @include desktop {
-            transform: translateY(0%);
-            display: flex;
-
-            // background: red;
-        }
-    }
-
-    .nav-wrapper {
-        display: none;
-
-        @include desktop {
-            display: flex;
-            justify-content: space-around;
-            flex: auto;
-            padding-inline-start: 40px;
-
-            li {
-                border-bottom: 1px solid transparent;
 
                 &:hover {
                     border-bottom: 1px solid $gold;
                 }
             }
-
-            a {
-                color: $gold;
-                letter-spacing: $spacing-medium;
-            }
         }
+    }
 
+    .show-menu {
+        transform: translateY(17%);
+        display: flex;
     }
 }
-
 // =========================
 // Homepage
 // =========================
