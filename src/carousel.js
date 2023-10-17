@@ -12,20 +12,20 @@ function main() {
             const newActive = event.target;
             const currentActive = ui.container.querySelector(".active");
 
-            const newActiveCol = getComputedStyle(newActive).getPropertyValue("grid-column-start");
-            const currentActiveCol = getComputedStyle(currentActive).getPropertyValue("grid-column-start");
+            const newActiveCol = newActive.dataset.cell;
+            const currentActiveCol = currentActive.dataset.cell;
 
             console.log({newActiveCol, currentActiveCol});  
+
+            ui.items.forEach((item) => {
+                item.classList.remove("active");
+                item.style.gridColumnStart = item.dataset.cell;
+            });
+            item.classList.add("active");
 
             newActive.style.gridColumnStart = currentActiveCol;
             currentActive.style.gridColumnStart = newActiveCol;
 
-
-
-            ui.items.forEach((item) => {
-                item.classList.remove("active");
-            });
-            item.classList.add("active");
         })
     });
 
