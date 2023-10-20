@@ -39,7 +39,7 @@ function main() {
   );
 }
 
-main();
+// main();
 
 //https://codepen.io/kristen17/pen/BaGOOMm
 // var swiper = new Swiper(".mySwiper", {
