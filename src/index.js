@@ -1,4 +1,5 @@
 import Swiper from 'swiper';
+import { Navigation, EffectCoverflow } from 'swiper/modules';
 import 'swiper/css/bundle';
 
 const ui = {
@@ -76,17 +77,18 @@ function main() {
 
 //https://codepen.io/kristen17/pen/BaGEeKe
 var swiper = new Swiper(".swiper", {
+  modules: [Navigation, EffectCoverflow],
   effect: "coverflow",
   grabCursor: true,
   centeredSlides: true,
   coverflowEffect: {
     rotate: 0,
-    stretch: 0,
-    depth: 100,
+    stretch: 10,
+    depth: 25,
     modifier: 4,
     slideShadows: true
   },
-  loop: true,
+  loop: false,
   // Navigation arrows
   navigation: {
     nextEl: ".swiper-button-next",
@@ -97,6 +99,12 @@ var swiper = new Swiper(".swiper", {
   },
   mousewheel: {
     thresholdDelta: 70
+  },
+  initialSlide: 0,
+  on: {
+    click(event) {
+      swiper.slideTo(this.clickedIndex);
+    }
   },
   breakpoints: {
     560: {

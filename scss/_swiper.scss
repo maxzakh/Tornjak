@@ -81,7 +81,7 @@
 
 section {
     position: relative;
-    width: calc(min(47rem, 90%));
+    width: calc(min(52rem, 90%));
     margin: 0 auto;
     min-height: 100vh;
     column-gap: 3rem;
@@ -93,30 +93,45 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   
     h2 {
-      letter-spacing: 0.8px;
+      letter-spacing: 0.5rem;
       font-weight: 700;
       font-size: 2.6rem;
       line-height: 1.2;
     }
   
     p {
-      font-size: 0.9rem;
-      max-width: 680px;
-      line-height: 1.6;
-      margin-inline: auto;
+      // font-size: 0.9rem;
+      // max-width: 680px;
+      // line-height: 1.6;
+      // margin-inline: auto;
       margin-top: 10px;
     }
   }
   
+  .swiper-wrapper div{
+    width: 300px !important;
+  }
   .swiper-container {
     position: relative;
+      --swiper-theme-color: #0f0;
+    
+      --swiper-navigation-size: 25px;
+      --swiper-navigation-top-offset: 50%;
+      --swiper-navigation-sides-offset: -30px;
+      //--swiper-navigation-color: var(--swiper-theme-color);
+    
   }
   
   .swiper {
     width: 100%;
     padding: 60px 0 95px 0;
+
+    &-wrapper {
+      transform: none !important;
+    }
   }
   
   .swiper-slide {
@@ -129,17 +144,23 @@ section {
     border-radius: 12px;
     box-shadow: -1px 5px 15px #0000001f;
   
+    h2 {
+      padding: 0 1rem;
+      font-size: 1.6rem;
+    }
+
     h3 {
+      padding: 0 1rem;
       color: #fff;
-      font-size: 2.5rem;
+      font-size: 1.2rem;
       line-height: 1.4;
       margin-bottom: 0.625rem;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.4px;
       position: relative;
     }
   
     p {
-      color: #fff;
+      // color: #fff;
       line-height: 1.6;
       font-size: 0.8rem;
     }
@@ -198,121 +219,33 @@ section {
   
   .swiper-slide--one {
     background: #0575e6; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to bottom,
-      #021b79,
-      #0575e6
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to bottom,
-      #021b79,
-      #0575e6
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
-    h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 600;
-    }
   }
-  
   .swiper-slide--two {
     background: #23074d; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to bottom,
-      #cc5333,
-      #23074d
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to bottom,
-      #cc5333,
-      #23074d
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
-    h3 {
-      font-family: "Quicksand", sans-serif;
-    }
   }
   
   .swiper-slide--three {
     background: #159957;
-  
-    h3 {
-      font-family: "Satisfy", cursive;
-      font-weight: 300;
-    }
   }
   
-  .swiper-slide--four {
-    background: #b06ab3;
-  
-    h3 {
-      font-family: "Courgette", cursive;
-      font-weight: 300;
-    }
-  }
-  
-  .swiper-slide--five {
-    background: #093028; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to bottom,
-      #237a57,
-      #093028
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to bottom,
-      #237a57,
-      #093028
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
-    h3 {
-      font-family: "Noto Serif Vithkuqi", serif;
-      font-weight: 300;
-    }
-  }
-  
-  .swiper-slide--six {
-    background: #b9f; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to bottom,
-      #b9f,
-      #3b2421
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #b9f, #3b2421);
-  
-    h3 {
-      font-family: "Chonburi", cursive;
-      font-weight: 400;
-    }
-  }
-  
-  .swiper-button-prev {
+  .swiper-button {
     background: white;
     border-radius: 50%;
     top: 47%;
-    left: -30px;
-    width: 50px;
-    height: 50px;
+    width: 50px !important;
+    height: 50px !important;
     box-shadow: 0px 2px 11px rgb(0 0 0 / 17%);
+
+    --swiper-theme-color: red;
   
-    &::after {
-      font-size: 1.4rem;
-      content: "";
+    &-prev {
+      left: -30px;
     }
-  
-    svg {
-      width: 25px;
+
+    &-next {
+      right: -30px;
     }
-  }
-  
-  .swiper-button-next {
-    background: white;
-    border-radius: 50%;
-    top: 47%;
-    right: -30px;
-    width: 50px;
-    height: 50px;
-    box-shadow: 0px 2px 11px rgba(190, 121, 121, 0.17);
-  
+    
     &::after {
       font-size: 1.4rem;
       content: "";
@@ -332,3 +265,7 @@ section {
     }
   }
   
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    content: none !important;
+  }
