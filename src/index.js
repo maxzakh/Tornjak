@@ -83,7 +83,7 @@ var swiper = new Swiper(".swiper", {
   centeredSlides: true,
   coverflowEffect: {
     rotate: 0,
-    stretch: 10,
+    stretch: 6,
     depth: 25,
     modifier: 4,
     slideShadows: true
@@ -100,7 +100,7 @@ var swiper = new Swiper(".swiper", {
   mousewheel: {
     thresholdDelta: 70
   },
-  initialSlide: 0,
+  initialSlide: 1,
   on: {
     click(event) {
       swiper.slideTo(this.clickedIndex);
